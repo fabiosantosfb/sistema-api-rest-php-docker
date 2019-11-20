@@ -1,0 +1,38 @@
+version: '3'
+
+services:
+  nginx-web:
+    container_name: nginx-web
+    restart: always
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile
+    volumes:
+      - ${APPLICATION_PATH}:/var/www/html
+      - ${APPLICATION_LOG_NGINX_PATH}:/var/log/nginx
+      - ${APPLICATION_NGINX_PATH}:/etc/nginx/conf.d
+    ports:
+      - "${NGINX_HTTP_PORT}:80"
+    links:
+      - php-fpm
+    networks:
+      - rede-ocorretor
+    depends_on:
+      - php-fpm
+
+  php-fpm:
+    container_name: php-fpm
+    restart: always
+    build:
+      context: ./php
+      dockerfile: Dockerfile
+    ports:
+      - "9000:80"
+    volumes:
+      - ${APPLICATION_PATH}:/var/www/html
+    networks:
+      - rede-ocorretor
+
+networks:
+  rede-ocorretor:
+    driver: bridge

@@ -1,0 +1,2 @@
+2019/11/01 19:06:40 [error] 7#7: *19 connect() failed (113: No route to host) while connecting to upstream, client: 172.20.0.1, server: meu-php.com, request: "GET / HTTP/1.1", upstream: "fastcgi://172.20.0.2:9000", host: "meu-php.com:8080"
+2019/11/01 19:06:43 [error] 7#7: *19 connect() failed (113: No route to host) while connecting to upstream, client: 172.20.0.1, server: meu-php.com, request: "GET /favicon.ico HTTP/1.1", upstream: "fastcgi://172.20.0.2:9000", host: "meu-php.com:8080"
